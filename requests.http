@@ -1,0 +1,13 @@
+@host = http://localhost:3001
+
+### Get Order
+GET {{host}}/order
+content-type: application/json
+
+### PATCH Order
+PATCH {{host}}/order/1
+content-type: application/json
+
+{
+  "statusOrder": "InProgress"
+}

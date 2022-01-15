@@ -1,0 +1,86 @@
+{
+  "order": [
+    {
+      "id": "1",
+      "randomDigit": 14826,
+      "customerName": "Dede QA DEV 8483",
+      "items": [
+        {
+          "productName": "Goceng",
+          "quantity": 1,
+          "variantName": "",
+          "variantNameLocale": "",
+          "decimalTotal": 3000
+        },
+        {
+          "productName": "Aren Latte With Almond Milk ",
+          "quantity": 1,
+          "variantName": "Fresh Milk * Normal * Iced",
+          "variantNameLocale": " * Normal * Iced",
+          "decimalTotal": 37000
+        }
+      ],
+      "status": "PAID",
+      "pickupTime": "2021-12-17T03:20:36.303Z",
+      "statusOrder": "ToDo"
+    },
+    {
+      "id": "2",
+      "randomDigit": 16167,
+      "customerName": "Robby Widyahartono",
+      "items": [
+        {
+          "productName": "Cappuccino",
+          "quantity": 1,
+          "variantName": "Regular * Hot * No Sugar * Fresh Milk",
+          "variantNameLocale": " * Hot * Tanpa Gula * Susu Segar",
+          "decimalTotal": 24000
+        }
+      ],
+      "status": "PAID",
+      "pickupTime": "2021-12-17T11:36:22.595Z",
+      "statusOrder": "ToDo"
+    },
+    {
+      "id": "3",
+      "randomDigit": 14826,
+      "customerName": "Ali Irawan",
+      "items": [
+        {
+          "productName": "Goceng 2",
+          "quantity": 1,
+          "variantName": "",
+          "variantNameLocale": "",
+          "decimalTotal": 3000
+        },
+        {
+          "productName": "Aren Latte With Almond Milk ",
+          "quantity": 1,
+          "variantName": "Fresh Milk * Normal * Iced",
+          "variantNameLocale": " * Normal * Iced",
+          "decimalTotal": 37000
+        }
+      ],
+      "status": "PAID",
+      "pickupTime": "2021-12-17T03:20:36.303Z",
+      "statusOrder": "ToDo"
+    },
+    {
+      "id": "4",
+      "randomDigit": 14826,
+      "customerName": "Paijo",
+      "items": [
+        {
+          "productName": "Goceng 3",
+          "quantity": 1,
+          "variantName": "",
+          "variantNameLocale": "",
+          "decimalTotal": 3000
+        }
+      ],
+      "status": "PAID",
+      "pickupTime": "2021-12-17T03:20:36.303Z",
+      "statusOrder": "ToDo"
+    }
+  ]
+}
