@@ -31,6 +31,7 @@ interface Options {
 }
 
 export const fetchOrderStatus = async (status: Status): Promise<Array<OrderDataProps>> => {
+  console.log("GET", status)
   const response = await fetch(
     `http://localhost:3001/order?statusOrder=${status}`
   );

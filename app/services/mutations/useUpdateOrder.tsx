@@ -6,7 +6,7 @@ interface UpdateOrderProps {
   statusOrder: Status;
 }
 const updateOrder = async ({id, statusOrder}: UpdateOrderProps): Promise<Array<OrderDataProps>> => {
-  console.log(statusOrder)
+  console.log("PATCH", statusOrder)
   const response = await fetch(
     `http://localhost:3001/order/${id}`,
     {
@@ -44,21 +44,21 @@ const useUpdateOrder = () => {
         statusOrder,
       ) || [];
 
-      if (prevDataBefore && prevDataCurrent) {
-        const cloneDataBefore = [...prevDataBefore];
-        const indexDataBefore = cloneDataBefore.findIndex(item => {
-          return item.id === id;
-        });
-        const dataAccepted = cloneDataBefore.splice(indexDataBefore, 1);
-        dataAccepted[0].statusOrder = statusOrder;
-        const currentData = [...prevDataCurrent, ...dataAccepted]
-        queryClient.setQueryData<Array<OrderDataProps>>(prevStatus, [
-          ...cloneDataBefore,
-        ]);
-        queryClient.setQueryData<Array<OrderDataProps>>(statusOrder, [
-          ...currentData,
-        ]);
-      }
+      // if (prevDataBefore && prevDataCurrent) {
+      //   const cloneDataBefore = [...prevDataBefore];
+      //   const indexDataBefore = cloneDataBefore.findIndex(item => {
+      //     return item.id === id;
+      //   });
+      //   const dataAccepted = cloneDataBefore.splice(indexDataBefore, 1);
+      //   dataAccepted[0].statusOrder = statusOrder;
+      //   const currentData = [...prevDataCurrent, ...dataAccepted]
+      //   queryClient.setQueryData<Array<OrderDataProps>>(prevStatus, [
+      //     ...cloneDataBefore,
+      //   ]);
+      //   queryClient.setQueryData<Array<OrderDataProps>>(statusOrder, [
+      //     ...currentData,
+      //   ]);
+      // }
 
       return {
         prevStatus,
