@@ -22,6 +22,8 @@ const updateOrder = async ({id, statusOrder}: UpdateOrderProps): Promise<Array<O
   return response.json();
 };
 
+
+
 const useUpdateOrder = () => {
   const queryClient = useQueryClient();
   return useMutation(updateOrder, {
@@ -31,6 +33,9 @@ const useUpdateOrder = () => {
       prevDataCurrent: Array<OrderDataProps>,
       prevDataBefore: Array<OrderDataProps>
     }> => {
+      queryClient.cancelQueries(Status.TO_DO);
+      queryClient.cancelQueries(Status.IN_PROGRESS);
+      queryClient.cancelQueries(Status.DONE);
       let prevStatus = Status.DONE;
       if (statusOrder === Status.IN_PROGRESS) {
         prevStatus = Status.TO_DO
@@ -44,21 +49,21 @@ const useUpdateOrder = () => {
         statusOrder,
       ) || [];
 
-      // if (prevDataBefore && prevDataCurrent) {
-      //   const cloneDataBefore = [...prevDataBefore];
-      //   const indexDataBefore = cloneDataBefore.findIndex(item => {
-      //     return item.id === id;
-      //   });
-      //   const dataAccepted = cloneDataBefore.splice(indexDataBefore, 1);
-      //   dataAccepted[0].statusOrder = statusOrder;
-      //   const currentData = [...prevDataCurrent, ...dataAccepted]
-      //   queryClient.setQueryData<Array<OrderDataProps>>(prevStatus, [
-      //     ...cloneDataBefore,
-      //   ]);
-      //   queryClient.setQueryData<Array<OrderDataProps>>(statusOrder, [
-      //     ...currentData,
-      //   ]);
-      // }
+      if (prevDataBefore && prevDataCurrent) {
+        const cloneDataBefore = [...prevDataBefore];
+        const indexDataBefore = cloneDataBefore.findIndex(item => {
+          return item.id === id;
+        });
+        const dataAccepted = cloneDataBefore.splice(indexDataBefore, 1);
+        dataAccepted[0].statusOrder = statusOrder;
+        const currentData = [...prevDataCurrent, ...dataAccepted]
+        queryClient.setQueryData<Array<OrderDataProps>>(prevStatus, [
+          ...cloneDataBefore,
+        ]);
+        queryClient.setQueryData<Array<OrderDataProps>>(statusOrder, [
+          ...currentData,
+        ]);
+      }
 
       return {
         prevStatus,
@@ -83,9 +88,9 @@ const useUpdateOrder = () => {
       }
     },
     onSettled: () => {
-      queryClient.invalidateQueries(Status.TO_DO);
-      queryClient.invalidateQueries(Status.IN_PROGRESS);
-      queryClient.invalidateQueries(Status.DONE);
+      // queryClient.invalidateQueries(Status.TO_DO);
+      // queryClient.invalidateQueries(Status.IN_PROGRESS);
+      // queryClient.invalidateQueries(Status.DONE);
     },
   });
 };

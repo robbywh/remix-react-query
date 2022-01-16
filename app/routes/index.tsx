@@ -28,16 +28,16 @@ export const loader: LoaderFunction = async ({params}) => {
 export default function Index() {
   const queryClient = useQueryClient()
   const orderStatusData = useLoaderData();
-  const {data: dataTodo, refetch: refetchOrderTodo, isLoading: isLoadingTodo} = useFetchOrderStatus(Status.TO_DO, {
+  const {data: dataTodo} = useFetchOrderStatus(Status.TO_DO, {
     initialData: orderStatusData.todo,
-    enabled: false
+    enabled: true
   });
-  const {data: dataInProgress, refetch: refetchOrderInProgress, isLoading: isLoadingInProgress} = useFetchOrderStatus(Status.IN_PROGRESS, {
-    enabled: false,
+  const {data: dataInProgress} = useFetchOrderStatus(Status.IN_PROGRESS, {
+    enabled: true,
     initialData: orderStatusData.inprogress
   });
-  const {data: dataDone, refetch: refetchOrderDone, isLoading: isLoadingDone} = useFetchOrderStatus(Status.DONE, {
-    enabled: false,
+  const {data: dataDone} = useFetchOrderStatus(Status.DONE, {
+    enabled: true,
     initialData: orderStatusData.done
   });
   const {mutate} = useUpdateOrder();
