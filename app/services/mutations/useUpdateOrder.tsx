@@ -88,7 +88,7 @@ const useUpdateOrder = () => {
       }
     },
     onSettled: () => {
-      // queryClient.invalidateQueries(Status.TO_DO);
+      queryClient.invalidateQueries(Status.TO_DO);
       // queryClient.invalidateQueries(Status.IN_PROGRESS);
       // queryClient.invalidateQueries(Status.DONE);
     },
